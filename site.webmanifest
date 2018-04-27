@@ -1,0 +1,11 @@
+{
+  "name": "Hilaryous.io",
+  "short_name": "Hilaryous.io",
+  "background_color": "#fff",
+  "icons": [{
+      "src": "icon.png",
+      "sizes": "192x192",
+      "type": "image/png"
+  }],
+  "start_url": "/"
+}
