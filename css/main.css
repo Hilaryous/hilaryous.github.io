@@ -139,7 +139,6 @@ button > svg: {
   padding-right: .5em;
   padding-bottom: .5em;
   height: calc(100vh - 1.5em);
-  transition: background 1s ease-in-out;
 }
 
 .main.pink {
@@ -162,10 +161,31 @@ button > svg: {
   color: #FAD393;
 }
 
+@keyframes fromTop {
+  0% {
+    transform: translateY(0px);
+  }
+  20% {
+    transform: translateY(-80px);
+  }
+  30% {
+    z-index: -10;
+  }
+  32% {
+    transform: translateY(64px);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+.animate-from-top {
+  animation: fromTop 1s ease-in-out;
+}
+
 /* ---------- LINK GROUP ---------- */
 .link-group {
   display: grid;
-  grid-gap: 16px;
   grid-template-columns: repeat(4, 1fr);
   justify-items: center;
 }
@@ -176,41 +196,41 @@ button > svg: {
   display: block;
   height: 64px;
   overflow: hidden;
-  width: 77px;
-  transition: background .5s ease;
+  min-width: 66px;
+  max-width: 79px;
 }
 
-.link.pink {
-  background-position-y: 0px;
+.link.dark-pink {
+  filter: invert(40%) sepia(59%) saturate(4226%) hue-rotate(318deg) brightness(90%) contrast(90%);
 }
 
 .link.green {
-  background-position-y: -82px;
+  filter: invert(50%) sepia(56%) saturate(270%) hue-rotate(46deg) brightness(84%) contrast(88%);
 }
 
 .link.yellow {
-  background-position-y: -164px;
+  filter: invert(82%) sepia(36%) saturate(423%) hue-rotate(345deg) brightness(100%) contrast(97%);
 }
 
 /* ---------- LINK SPRITES ---------- */
 
 .github {
-  background: url(../svg/github-sprite.svg) no-repeat;
+  background: url(../svg/github.svg) no-repeat;
   background-size: cover;
 }
 
 .mail {
-  background: url(../svg/mail-sprite.svg) no-repeat;
+  background: url(../svg/mail.svg) no-repeat;
   background-size: cover;
 }
 
 .twitter {
-  background: url(../svg/twitter-sprite.svg) no-repeat;
+  background: url(../svg/twitter.svg) no-repeat;
   background-size: cover;
 }
 
 .linkedin {
-  background: url(../svg/linked-in-sprite.svg) no-repeat;
+  background: url(../svg/linked-in.svg) no-repeat;
   background-size: cover;
 }
 
@@ -220,7 +240,6 @@ button > svg: {
   align-self: end;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 16px;
   justify-items: center;
 }
 
@@ -228,6 +247,7 @@ button > svg: {
 .link-group,
 .color-changers {
   font-size: .5em;
+  grid-gap: 4px;
 }
 
 /* ---------- FLOWERS ---------- */
@@ -252,6 +272,7 @@ button > svg: {
   .link-group,
   .color-changers {
     font-size: 1em;
+    grid-gap: 16px;
   }
 
   .link-group {

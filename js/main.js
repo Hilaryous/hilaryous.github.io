@@ -38,11 +38,21 @@ const nodeListToArray = list => (
   Array.prototype.slice.call(list)
 )
 
-const switchColorForItem = (color) => (item) => {
+const animateFromTop = (item) => {
+  item.classList.add('animate-from-top')
+  window.setTimeout(
+    () => {
+      item.classList.remove('animate-from-top')
+    },
+    1000
+  )
+}
+
+const switchColorForItem = (color) => (item, index=0) => {
   const classListArr = nodeListToArray(item.classList)
-  const oldToken = classListArr.slice(-1)[0]
+  const oldColorToken = classListArr.slice(-2)[index]
   if (!classListArr.includes(color)) {
-    item.classList.replace(oldToken, color)
+    setTimeout(() => item.classList.replace(oldColorToken, color), 500)
   }
 }
 
@@ -54,28 +64,32 @@ const switchColorToBlue = switchColorForItem('blue')
 
 el(SELECT.YELLOW_COLOR_CHANGER).addEventListener('click', (e) => {
   elAll(SELECT.LINK).forEach((item) => {
+    animateFromTop(item)
     switchColorToGreen(item)
   })
-  switchColorToYellow(el(SELECT.BACKGROUND))
+  switchColorToYellow(el(SELECT.BACKGROUND), 1)
 })
 
 el(SELECT.BLUE_COLOR_CHANGER).addEventListener('click', (e) => {
   elAll(SELECT.LINK).forEach((item) => {
+    animateFromTop(item)
     switchColorToDarkPink(item)
   })
-  switchColorToBlue(el(SELECT.BACKGROUND))
+  switchColorToBlue(el(SELECT.BACKGROUND), 1)
 })
 
 el(SELECT.DARK_PINK_COLOR_CHANGER).addEventListener('click', (e) => {
   elAll(SELECT.LINK).forEach((item) => {
+    animateFromTop(item)
     switchColorToYellow(item)
   })
-  switchColorToDarkPink(el(SELECT.BACKGROUND))
+  switchColorToDarkPink(el(SELECT.BACKGROUND), 1)
 })
 
 el(SELECT.PINK_COLOR_CHANGER).addEventListener('click', (e) => {
   elAll(SELECT.LINK).forEach((item) => {
+    animateFromTop(item)
     switchColorToGreen(item)
   })
-  switchColorToPink(el(SELECT.BACKGROUND))
+  switchColorToPink(el(SELECT.BACKGROUND), 1)
 })
