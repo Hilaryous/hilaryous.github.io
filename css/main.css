@@ -108,6 +108,12 @@ h1 {
   text-align: center;
 }
 
+h2 {
+  font-size: 3em;
+  margin: 0;
+  text-align: center;
+}
+
 button {
   background: transparent;
   border: none;
@@ -159,28 +165,6 @@ button > svg: {
 .main.dark-pink {
   background-color: #DB3C71;
   color: #FAD393;
-}
-
-@keyframes fromTop {
-  0% {
-    transform: translateY(0px);
-  }
-  20% {
-    transform: translateY(-80px);
-  }
-  30% {
-    z-index: -10;
-  }
-  32% {
-    transform: translateY(64px);
-  }
-  100% {
-    transform: translateY(0);
-  }
-}
-
-.animate-from-top {
-  animation: fromTop 1s ease-in-out;
 }
 
 /* ---------- LINK GROUP ---------- */
@@ -253,6 +237,54 @@ button > svg: {
 /* ---------- FLOWERS ---------- */
 .flower-svg {
   height: 64px;
+}
+
+/* ---------- ANIMATIONS ---------- */
+
+@keyframes fromTop {
+  50% {
+    transform: translateY(-90px);
+  }
+  80% {
+    transform: translateY(0px);
+  }
+  90% {
+    transform: translateY(-5px);
+  }
+}
+
+@keyframes bounce {
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes fade {
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+}
+
+.animate-from-top {
+  animation: fromTop 1s ease-in-out;
+}
+
+.flower-bounce:hover {
+  animation: bounce 2s ease-in-out infinite both;
 }
 
 /* ---------- RESPONSIVE STYLES ABOVE MOBILE ---------- */
