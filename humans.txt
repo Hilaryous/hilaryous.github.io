@@ -3,11 +3,10 @@
 
 # TEAM
 
-    <name> -- <role> -- <twitter>
-
-# THANKS
-
-    <name>
+Designer/Developer:Hilary Denton
+  Contact: hilaryousdenton@gmail.com
+  Twitter: @hilaryousdev
+  From: Denver, CO, USA
 
 # TECHNOLOGY COLOPHON
 
