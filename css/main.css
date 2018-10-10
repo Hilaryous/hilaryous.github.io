@@ -220,7 +220,6 @@ button > svg: {
 
 /* ---------- COLOR CHANGER BUTTONS ---------- */
 .color-changers {
-  justify-self: start;
   align-self: end;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -321,6 +320,10 @@ button > svg: {
   .color-changers {
     font-size: 1em;
     grid-gap: 16px;
+  }
+
+  .color-changers {
+    justify-self: start;
   }
 
   .link-group {
