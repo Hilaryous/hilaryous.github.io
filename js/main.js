@@ -62,34 +62,35 @@ const switchColorToYellow = switchColorForItem('yellow')
 const switchColorToPink = switchColorForItem('pink')
 const switchColorToBlue = switchColorForItem('blue')
 
-el(SELECT.YELLOW_COLOR_CHANGER).addEventListener('click', (e) => {
-  elAll(SELECT.LINK).forEach((item) => {
-    animateFromTop(item)
-    switchColorToGreen(item)
-  })
-  switchColorToYellow(el(SELECT.BACKGROUND), 1)
-})
+const COLOR_SWITCHERS_ARR = [
+  {
+    selector: SELECT.YELLOW_COLOR_CHANGER,
+    toColorFn: switchColorToGreen,
+    toBgColorFn: switchColorToYellow,
+  },
+  {
+    selector: SELECT.BLUE_COLOR_CHANGER,
+    toColorFn: switchColorToDarkPink,
+    toBgColorFn: switchColorToBlue,
+  },
+  {
+    selector: SELECT.DARK_PINK_COLOR_CHANGER,
+    toColorFn: switchColorToYellow,
+    toBgColorFn: switchColorToDarkPink,
+  },
+  {
+    selector: SELECT.PINK_COLOR_CHANGER,
+    toColorFn: switchColorToGreen,
+    toBgColorFn: switchColorToPink,
+  },
+]
 
-el(SELECT.BLUE_COLOR_CHANGER).addEventListener('click', (e) => {
-  elAll(SELECT.LINK).forEach((item) => {
-    animateFromTop(item)
-    switchColorToDarkPink(item)
+COLOR_SWITCHERS_ARR.map((obj) => {
+  el(obj.selector).addEventListener('click', (e) => {
+    elAll(SELECT.LINK).forEach((item) => {
+      animateFromTop(item)
+      obj.toColorFn(item)
+    })
+    obj.toBgColorFn(el(SELECT.BACKGROUND), 1)
   })
-  switchColorToBlue(el(SELECT.BACKGROUND), 1)
-})
-
-el(SELECT.DARK_PINK_COLOR_CHANGER).addEventListener('click', (e) => {
-  elAll(SELECT.LINK).forEach((item) => {
-    animateFromTop(item)
-    switchColorToYellow(item)
-  })
-  switchColorToDarkPink(el(SELECT.BACKGROUND), 1)
-})
-
-el(SELECT.PINK_COLOR_CHANGER).addEventListener('click', (e) => {
-  elAll(SELECT.LINK).forEach((item) => {
-    animateFromTop(item)
-    switchColorToGreen(item)
-  })
-  switchColorToPink(el(SELECT.BACKGROUND), 1)
 })
