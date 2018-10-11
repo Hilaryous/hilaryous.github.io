@@ -269,12 +269,9 @@ button > svg: {
     font-size: 2em;
   }
 
-  main {
+  .main {
     padding-left: 1em;
-    padding-right: 1em;
-    margin: 5em;
-    margin-bottom: 2.5em;
-    height: calc(100vh - 7.5em);
+    padding-right: 2em;
   }
 
   .link-group,
