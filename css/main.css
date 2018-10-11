@@ -36,50 +36,11 @@ html {
   text-shadow: none;
 }
 
-/*
- * A better looking default horizontal rule
- */
-
-hr {
-  display: block;
-  height: 1px;
-  border: 0;
-  border-top: 1px solid #ccc;
-  margin: 1em 0;
-  padding: 0;
-}
-
-/*
- * Remove the gap between audio, canvas, iframes,
- * images, videos and the bottom of their containers:
- * https://github.com/h5bp/html5-boilerplate/issues/440
- */
-
-audio,
-canvas,
-iframe,
-img,
-svg,
-video {
-  vertical-align: middle;
-}
-
-/*
- * Remove default fieldset styles.
- */
-
-fieldset {
-  border: 0;
-  margin: 0;
-  padding: 0;
-}
-
-/*
- * Allow only vertical resizing of textareas.
- */
-
-textarea {
-  resize: vertical;
+/* box size includes padding & border for easier math
+ * https://css-tricks.com/box-sizing/
+*/
+*, *:before, *:after {
+  box-sizing: border-box;
 }
 
 /* ==========================================================================
@@ -133,8 +94,6 @@ button > svg: {
   justify-self: center;
 }
 
-/* ---------- KEYFRAMES ---------- */
-
 /* ---------- MAIN ---------- */
 .main {
   display: grid;
@@ -144,7 +103,7 @@ button > svg: {
   padding-left: .5em;
   padding-right: .5em;
   padding-bottom: .5em;
-  height: calc(100vh - 1.5em);
+  height: 100vh;
 }
 
 .main.pink {
@@ -238,7 +197,7 @@ button > svg: {
   height: 64px;
 }
 
-/* ---------- ANIMATIONS ---------- */
+/* ---------- KEYFRAMES ---------- */
 
 @keyframes fromTop {
   50% {
@@ -278,6 +237,8 @@ button > svg: {
   75% { transform: rotate(20deg); }
 }
 
+/* ---------- ANIMATIONS ---------- */
+
 .animate-from-top {
   animation: fromTop 1s ease-in-out;
 }
@@ -301,11 +262,11 @@ button > svg: {
 /* ---------- RESPONSIVE STYLES ABOVE MOBILE ---------- */
 @media only screen and (min-width: 35em) {
   h1 {
-    font-size: 10em;
+    font-size: 5em;
   }
 
   h2 {
-    font-size: 5em;
+    font-size: 2em;
   }
 
   main {
@@ -335,96 +296,22 @@ button > svg: {
   }
 }
 
+@media only screen and (min-width: 64em) {
+  h1 {
+    font-size: 10em;
+  }
+
+  h2 {
+    font-size: 5em;
+  }
+}
+
 /* ---------- PRINT STYLES ---------- */
 @media print,
   (-webkit-min-device-pixel-ratio: 1.25),
   (min-resolution: 1.25dppx),
   (min-resolution: 120dpi) {
   /* Style adjustments for high resolution devices */
-}
-
-/* ==========================================================================
-   Helper classes
-   ========================================================================== */
-
-/*
- * Hide visually and from screen readers
- */
-
-.hidden {
-  display: none !important;
-}
-
-/*
- * Hide only visually, but have it available for screen readers:
- * https://snook.ca/archives/html_and_css/hiding-content-for-accessibility
- *
- * 1. For long content, line feeds are not interpreted as spaces and small width
- *    causes content to wrap 1 word per line:
- *    https://medium.com/@jessebeach/beware-smushed-off-screen-accessible-text-5952a4c2cbfe
- */
-
-.visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  -webkit-clip-path: inset(50%);
-  clip-path: inset(50%);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
-  white-space: nowrap; /* 1 */
-}
-
-/*
- * Extends the .visuallyhidden class to allow the element
- * to be focusable when navigated to via the keyboard:
- * https://www.drupal.org/node/897638
- */
-
-.visuallyhidden.focusable:active,
-.visuallyhidden.focusable:focus {
-  clip: auto;
-  -webkit-clip-path: none;
-  clip-path: none;
-  height: auto;
-  margin: 0;
-  overflow: visible;
-  position: static;
-  width: auto;
-  white-space: inherit;
-}
-
-/*
- * Hide visually and from screen readers, but maintain layout
- */
-
-.invisible {
-  visibility: hidden;
-}
-
-/*
- * Clearfix: contain floats
- *
- * For modern browsers
- * 1. The space content is one way to avoid an Opera bug when the
- *    `contenteditable` attribute is included anywhere else in the document.
- *    Otherwise it causes space to appear at the top and bottom of elements
- *    that receive the `clearfix` class.
- * 2. The use of `table` rather than `block` is only necessary if using
- *    `:before` to contain the top-margins of child elements.
- */
-
-.clearfix:before,
-.clearfix:after {
-  content: " "; /* 1 */
-  display: table; /* 2 */
-}
-
-.clearfix:after {
-  clear: both;
 }
 
 /* ==========================================================================
@@ -453,10 +340,6 @@ button > svg: {
       content: " (" attr(href) ")";
     }
 
-    abbr[title]:after {
-      content: " (" attr(title) ")";
-    }
-
   /*
     * Don't show links that are fragment identifiers,
     * or use the `javascript:` pseudo protocol
@@ -467,38 +350,13 @@ button > svg: {
     content: "";
   }
 
-  pre {
-    white-space: pre-wrap !important;
-  }
-  pre,
-  blockquote {
-    border: 1px solid #999;
-    page-break-inside: avoid;
-  }
-
-  /*
-    * Printing Tables:
-    * http://css-discuss.incutio.com/wiki/Printing_Tables
-    */
-
-  thead {
-    display: table-header-group;
-  }
-
-  tr,
-  img {
-    page-break-inside: avoid;
-  }
-
   p,
-  h2,
-  h3 {
+  h2 {
     orphans: 3;
     widows: 3;
   }
 
-  h2,
-  h3 {
+  h2 {
     page-break-after: avoid;
   }
 }
